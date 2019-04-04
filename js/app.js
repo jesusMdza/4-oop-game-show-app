@@ -7,7 +7,7 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 *************************************/
-var string = 'This should be working';
+var string = 'This should be working right?';
 
 
  /*
