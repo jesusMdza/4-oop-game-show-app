@@ -6,9 +6,27 @@ FSJS TechDegree Project 4 - OOP Game Show App
 - This project is attempting to receive an "Exceeds Expectations" grade.
 
 
+
+
+
 *************************************/
+class Phrase {
+   constructor(phrase) {
+      this.phrase = phrase.toLowerCase();
+   }
 
+   addPhraseToDisplay() {
 
+   }
+
+   checkLetter() {
+
+   }
+
+   showMatchedLetter() {
+
+   }
+}
 
  /*
  IMPORTANT NOTE:
@@ -33,56 +51,3 @@ Create the Phrase class in the Phrase.js file.
     4. showMatchedLetter(): reveals the letter(s) on the board that matches the player's selection. To reveal the matching letter(s), select all 
        of the letter DOM elements that have a CSS class name that matches the selected letter and replace each selected element's 
        hide CSS class with the show CSS class.
-
-Create the Game class in the Game.js file.
-    1. The class should include a constructor that initializes the following properties:
-        a. missed: used to track the number of missed guesses by the player. The initial value is 0, since no guesses have been made 
-           at the start of the game.
-        b. phrases: an array of five Phrase objects to use with the game. A phrase should only include letters and spaces— no numbers, punctuation 
-           or other special characters.
-        c. activePhrase: This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() method, this 
-           property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
-
-    2. The class should also have these methods:
-        a. startGame(): hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property 
-           with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() 
-           method on the active Phrase object.
-        b. getRandomPhrase(): this method randomly retrieves one of the phrases stored in the phrases array and returns it.
-        c. handleInteraction(): this method controls most of the game logic. It checks to see if the button clicked by the player matches 
-           a letter in the phrase, and then directs the game based on a correct or incorrect guess. This method should:
-            1a. Disable the selected letter’s onscreen keyboard button.
-            2a. If the phrase does not include the guessed letter, add the wrong CSS class to the selected letter's keyboard 
-                button and call the removeLife() method.
-            3a. If the phrase includes the guessed letter, add the chosen CSS class to the selected letter's keyboard button, call the 
-                showMatchedLetter() method on the phrase, and then call the checkForWin() method. If the player has won the 
-                game, also call the gameOver() method.
-    3. removeLife(): this method removes a life from the scoreboard, by replacing one of the liveHeart.png images 
-       with a lostHeart.png image (found in the images folder) and increments the missed property. If the player has five missed 
-       guesses (i.e they're out of lives), then end the game by calling the gameOver() method.
-    4. checkForWin(): this method checks to see if the player has revealed all of the letters in the active phrase.
-    5. gameOver(): this method displays the original start screen overlay, and depending on the outcome of the game, updates the 
-       overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS 
-       class with either the win or lose CSS class.
-
-Update the app.js file.
-    1. Create a new instance of the Game class and add event listeners for the start button and onscreen keyboard buttons:
-        a. Add a click event listener to the "Start Game" button which creates a new Game object and starts the game by 
-           calling the startGame() method.
-        b. Add click event listeners to each of the onscreen keyboard buttons, so that clicking a button 
-           calls the handleInteraction() method on the Game object. Event delegation can also be used in order to avoid having to add an 
-           event listener to each individual keyboard button. Clicking the space between and around the onscreen keyboard buttons 
-           should not result in the handleInteraction() method being called.
-
-Resetting the gameboard between games.
-    1. After a game is completed, the gameboard needs to be reset so that clicking the "Start Game" button will 
-       successfully load a new game.
-        a. Remove all li elements from the Phrase ul element.
-        b. Enable all of the onscreen keyboard buttons and update each to use the key CSS class, and not use 
-           the chosen or wrong CSS classes.
-        c. Reset all of the heart images (i.e. the player's lives) in the scoreboard at the bottom of the gameboard to display 
-           the liveHeart.png image.
-
-Add good code comments
-
-Check for cross-browser consistency
-*/
