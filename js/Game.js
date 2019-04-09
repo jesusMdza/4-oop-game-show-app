@@ -7,18 +7,47 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 *************************************/
+const overlay = document.querySelector('#overlay');
+
 class Game {
    constructor() {
       this.missed = 0;
-      this.phrases = {
-         ['Blood is thicker than water'],
-         ['To be or not to be'],
-         ['Procrastination is the thief of time']
-      };
+      this.phrases = [
+         {phrase: 'Blood is thicker than water'},
+         {phrase: 'To be or not to be'},
+         {phrase: 'Procrastination is the thief of time'},
+         {phrase: 'Lickety Split'},
+         {phrase: 'Phrase Five'}
+      ];
       this.activePhrase = null;
    }
-}
 
+   getRandomPhrase() {
+      const randomPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
+      return randomPhrase;
+   }
+
+   startGame() {
+      overlay.style.display = 'none';
+      this.activePhrase = this.getRandomPhrase();
+   }
+
+   checkForWin() {
+      
+   }
+
+   removeLife() {
+
+   }
+
+   gameOver() {
+
+   }
+
+   handleInteraction() {
+
+   }
+}
 
  /*
  IMPORTANT NOTE:
@@ -34,7 +63,7 @@ Create the Game class in the Game.js file.
            or other special characters.
         c. activePhrase: This is the Phrase object that’s currently in play. The initial value is null. Within the startGame() method, this 
            property will be set to the Phrase object returned from a call to the getRandomPhrase() method.
-
+ 
     2. The class should also have these methods:
         a. startGame(): hides the start screen overlay, calls the getRandomPhrase() method, and sets the activePhrase property 
            with the chosen phrase. It also adds that phrase to the board by calling the addPhraseToDisplay() 
@@ -54,4 +83,4 @@ Create the Game class in the Game.js file.
     4. checkForWin(): this method checks to see if the player has revealed all of the letters in the active phrase.
     5. gameOver(): this method displays the original start screen overlay, and depending on the outcome of the game, updates the 
        overlay h1 element with a friendly win or loss message, and replaces the overlay’s start CSS 
-       class with either the win or lose CSS class.
+       class with either the win or lose CSS class. **/

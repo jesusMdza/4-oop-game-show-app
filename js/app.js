@@ -7,6 +7,17 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 *************************************/
+const button = document.getElementById('btn__reset');
+
+let game = button.addEventListener('click', () => {
+   game = new Game();
+   game.startGame();
+   const phrase = new Phrase(`${game.activePhrase.phrase}`);
+   phrase.addPhraseToDisplay();
+   phrase.checkLetter();
+   console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
+});
+
 
  /*
 Update the app.js file.

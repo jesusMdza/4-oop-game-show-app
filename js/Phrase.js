@@ -10,23 +10,52 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 *************************************/
+let phrase;
+let li;
+let correctKey;
+
 class Phrase {
    constructor(phrase) {
       this.phrase = phrase.toLowerCase();
    }
 
    addPhraseToDisplay() {
+    const ul = document.querySelector('#phrase ul');
+       phrase = this.phrase;
 
+       for (let i = 0; i < phrase.length; i++) {
+           li = document.createElement('li');
+           li.textContent = phrase[i];
+
+           if (li.textContent === ' ') {
+               li.classList.add('space');
+           } else {
+               li.classList.add('letter');
+           }
+
+           ul.appendChild(li);
+       }
    }
 
    checkLetter() {
+    const keys = document.getElementsByClassName('key');
 
+    for (let i = 0; i < keys.length; i++) {
+        keys[i].addEventListener('click', (event) => {
+            const targetKey = event.target.textContent;
+            correctKey = this.phrase.includes(targetKey);
+            return correctKey;
+        });
+    }
+    // this.showMatchedLetter();
    }
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
    showMatchedLetter() {
-
+       const phraseLI = document.querySelector('ul').children;
+       console.log(correctKey);
    }
 }
+
 
  /*
  IMPORTANT NOTE:
@@ -50,4 +79,4 @@ Create the Phrase class in the Phrase.js file.
     3. checkLetter(): checks to see if the letter selected by the player matches a letter in the phrase.
     4. showMatchedLetter(): reveals the letter(s) on the board that matches the player's selection. To reveal the matching letter(s), select all 
        of the letter DOM elements that have a CSS class name that matches the selected letter and replace each selected element's 
-       hide CSS class with the show CSS class.
+       hide CSS class with the show CSS class. **/
