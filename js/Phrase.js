@@ -10,9 +10,7 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 *************************************/
-let phrase;
-let li;
-let correctKey;
+let correctLetter;
 
 class Phrase {
    constructor(phrase) {
@@ -21,11 +19,10 @@ class Phrase {
 
    addPhraseToDisplay() {
     const ul = document.querySelector('#phrase ul');
-       phrase = this.phrase;
 
-       for (let i = 0; i < phrase.length; i++) {
-           li = document.createElement('li');
-           li.textContent = phrase[i];
+       for (let i = 0; i < this.phrase.length; i++) {
+           let li = document.createElement('li');
+           li.textContent = this.phrase[i];
 
            if (li.textContent === ' ') {
                li.classList.add('space');
@@ -37,22 +34,12 @@ class Phrase {
        }
    }
 
-   checkLetter() {
-    const keys = document.getElementsByClassName('key');
-
-    for (let i = 0; i < keys.length; i++) {
-        keys[i].addEventListener('click', (event) => {
-            const targetKey = event.target.textContent;
-            correctKey = this.phrase.includes(targetKey);
-            return correctKey;
-        });
-    }
-    // this.showMatchedLetter();
+   checkLetter(letter) {
+       return game.activePhrase.includes(letter);
    }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-   showMatchedLetter() {
-       const phraseLI = document.querySelector('ul').children;
-       console.log(correctKey);
+   showMatchedLetter(letter) {
+       this.checkLetter(letter);
    }
 }
 
