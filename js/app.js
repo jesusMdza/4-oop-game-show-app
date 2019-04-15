@@ -7,14 +7,13 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 *************************************/
-const button = document.getElementById('btn__reset');
-const keys = document.getElementsByClassName('key');
+const button = document.querySelector('#btn__reset');
+const keys = document.querySelectorAll('key');
 
 let game = button.addEventListener('click', () => {
    game = new Game();
    game.startGame();
-   const phrase = new Phrase(`${game.activePhrase.phrase}`);
-   phrase.addPhraseToDisplay();
+   game.activePhrase.addPhraseToDisplay();
 });
 
 

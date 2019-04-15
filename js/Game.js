@@ -24,7 +24,7 @@ class Game {
 
    getRandomPhrase() {
       const randomPhrase = this.phrases[Math.floor(Math.random() * this.phrases.length)];
-      return randomPhrase;
+      return new Phrase(randomPhrase);
    }
 
    startGame() {
@@ -33,10 +33,31 @@ class Game {
    }
 
    checkForWin() {
+      const appendedLI = document.querySelectorAll('#phrase ul li');
+      let win = false;
+      let phraseLength = 0;
+      let correct = 0;
+
       
+      for (let i = 0; i < appendedLI.length; i++) {
+         if (appendedLI[i].textContent !== ' ') {
+            phraseLength+= 1;
+         }
+
+         if (appendedLI[i].className === 'letter show') {
+            correct+= 1;
+         }
+      }
+
+      if (correct === phraseLength) {
+         win = true;
+      }
+
+      console.log(win);
    }
 
    removeLife() {
+      
 
    }
 

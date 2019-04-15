@@ -10,15 +10,15 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 *************************************/
-let correctLetter;
+// let correctLetter;
 
 class Phrase {
    constructor(phrase) {
-      this.phrase = phrase.toLowerCase();
+      this.phrase = phrase.phrase.toLowerCase();
    }
 
    addPhraseToDisplay() {
-    const ul = document.querySelector('#phrase ul');
+       const ul = document.querySelector('ul');
 
        for (let i = 0; i < this.phrase.length; i++) {
            let li = document.createElement('li');
@@ -28,6 +28,7 @@ class Phrase {
                li.classList.add('space');
            } else {
                li.classList.add('letter');
+               li.classList.add('hide');
            }
 
            ul.appendChild(li);
@@ -39,7 +40,13 @@ class Phrase {
    }
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
    showMatchedLetter(letter) {
-       this.checkLetter(letter);
+       const appendedLI = document.querySelectorAll('#phrase ul li');
+       
+       for (let i = 0; i < appendedLI.length; i++) {
+           if (appendedLI[i].className === 'letter hide' && appendedLI[i].textContent === letter) {
+               appendedLI[i].className = 'letter show';
+           }
+       }
    }
 }
 
