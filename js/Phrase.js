@@ -6,9 +6,6 @@ FSJS TechDegree Project 4 - OOP Game Show App
 - This project is attempting to receive an "Exceeds Expectations" grade.
 
 
-
-
-
 *************************************/
 // let correctLetter;
 
@@ -41,12 +38,12 @@ class Phrase {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
    showMatchedLetter(letter) {
        const appendedLI = document.querySelectorAll('#phrase ul li');
-       
-       for (let i = 0; i < appendedLI.length; i++) {
-           if (appendedLI[i].className === 'letter hide' && appendedLI[i].textContent === letter) {
-               appendedLI[i].className = 'letter show';
+
+       appendedLI.forEach((element) => {
+           if (element.textContent === letter) {
+               element.className = 'letter show';
            }
-       }
+       });
    }
 }
 

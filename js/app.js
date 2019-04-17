@@ -8,13 +8,23 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 *************************************/
 const button = document.querySelector('#btn__reset');
-const keys = document.querySelectorAll('key');
+const qwertyDiv = document.querySelector('#qwerty');
 
 let game = button.addEventListener('click', () => {
    game = new Game();
    game.startGame();
    game.activePhrase.addPhraseToDisplay();
+
+   // click event delegation on qwerty div
+   qwertyDiv.addEventListener('click', (event) => {
+      const target = event.target;
+
+      if (target.className === 'key') {
+         game.handleInteraction(target);
+      }
+   });
 });
+
 
 
  /*

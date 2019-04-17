@@ -17,7 +17,7 @@ class Game {
          {phrase: 'To be or not to be'},
          {phrase: 'Procrastination is the thief of time'},
          {phrase: 'Lickety Split'},
-         {phrase: 'Phrase Five'}
+         {phrase: 'Raining cats and dogs'}
       ];
       this.activePhrase = null;
    }
@@ -28,6 +28,22 @@ class Game {
    }
 
    startGame() {
+      const li = document.querySelectorAll('ul li');
+      const keys = document.querySelectorAll('#qwerty button');
+      const tries = document.querySelectorAll('.tries img');
+
+      li.forEach((element) => {
+         element.remove();
+      });
+
+      keys.forEach((element) => {
+         element.className = 'key';
+      });
+
+      tries.forEach((element) => {
+         element.src = 'images/liveHeart.png';
+      });
+
       overlay.style.display = 'none';
       this.activePhrase = this.getRandomPhrase();
    }
@@ -38,35 +54,59 @@ class Game {
       let phraseLength = 0;
       let correct = 0;
 
-      
-      for (let i = 0; i < appendedLI.length; i++) {
-         if (appendedLI[i].textContent !== ' ') {
+      appendedLI.forEach((element) => {
+         if (element.textContent !== ' ') {
             phraseLength+= 1;
          }
 
-         if (appendedLI[i].className === 'letter show') {
+         if (element.className === 'letter show') {
             correct+= 1;
          }
-      }
+      });
 
       if (correct === phraseLength) {
-         win = true;
+         return win = true;
       }
-
-      console.log(win);
    }
 
    removeLife() {
+      const tries = document.querySelectorAll('.tries img');
+      tries[this.missed].src = 'images/lostHeart.png';
+      this.missed++;
       
-
+      if (this.missed === 5) {
+         this.gameOver(false);
+      }
    }
 
-   gameOver() {
+   gameOver(gameWon) {
+      overlay.style.display = 'flex';
 
+      if (gameWon === false) {
+         overlay.className = 'lose';
+      }
+
+      if (gameWon === true) {
+         overlay.className = 'win';
+      }
    }
 
-   handleInteraction() {
+   handleInteraction(button) {
+      const letter = button.textContent;
+      button.disabled = true;
+      
+      if (game.activePhrase.checkLetter(letter) === true) {
+         button.className = 'chosen';
+         this.activePhrase.showMatchedLetter(letter);
+         this.checkForWin();
+      } else {
+         button.className = 'wrong';
+         this.removeLife();
+      }
 
+      if (this.checkForWin() === true) {
+         this.gameOver(true);
+      }
    }
 }
 
