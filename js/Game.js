@@ -38,6 +38,7 @@ class Game {
 
       keys.forEach((element) => {
          element.className = 'key';
+         element.disabled = false;
       });
 
       tries.forEach((element) => {
