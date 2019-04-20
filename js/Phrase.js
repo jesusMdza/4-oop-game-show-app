@@ -4,16 +4,18 @@ FSJS TechDegree Project 4 - OOP Game Show App
 
 
 - This project is attempting to receive an "Exceeds Expectations" grade.
+- CSS changes noted in ReadMe file
 
 
 *************************************/
-// let correctLetter;
-
 class Phrase {
    constructor(phrase) {
       this.phrase = phrase.phrase.toLowerCase();
    }
 
+   /* Creates and styles "li" elements according to passed phrase length.
+   Specific styles given depending if "li" text content is a letter or empty space.
+   Appends "li" elements to "ul".*/
    addPhraseToDisplay() {
        const ul = document.querySelector('ul');
 
@@ -32,10 +34,12 @@ class Phrase {
        }
    }
 
+   /* Checks if passed letter is included in current phrase. Returns boolean. */
    checkLetter(letter) {
        return this.phrase.includes(letter);
    }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+                 
+   /* Show "li" if passed letter matches appended "li" element(s) text content */
    showMatchedLetter(letter) {
        const appendedLI = document.querySelectorAll('#phrase ul li');
 
@@ -46,28 +50,3 @@ class Phrase {
        });
    }
 }
-
-
- /*
- IMPORTANT NOTE:
-
-These instructions detail what needs to be added to each of three JavaScript files used in the recommended approach to this project. 
-For a more detailed walkthrough of how to complete this project, please refer to the project study guide.
-
-Create the Phrase class in the Phrase.js file.
-    1. The class should include a constructor that receives a phrase parameter and initializes the following properties:
-        a. phrase: this is the actual phrase the Phrase object is representing. This property should be set to the phrase parameter, 
-           but converted to all lower case.
-
-    2. The class should also have these methods:
-        a. addPhraseToDisplay(): this adds letter placeholders to the display when the game starts. 
-           Each letter is presented by an empty box, one li element for each letter. See the example_phrase_html.txt file for an 
-           example of what the rendered HTML for a phrase should look like when the game starts, including any id or class attributes needed. 
-           When the player correctly guesses a letter, the empty box is replaced with the matched 
-           letter (see the showMatchedLetter() method below). Make sure the phrase displayed on the screen uses the letter CSS class for 
-           letters and the space CSS class for spaces.
-
-    3. checkLetter(): checks to see if the letter selected by the player matches a letter in the phrase.
-    4. showMatchedLetter(): reveals the letter(s) on the board that matches the player's selection. To reveal the matching letter(s), select all 
-       of the letter DOM elements that have a CSS class name that matches the selected letter and replace each selected element's 
-       hide CSS class with the show CSS class. **/
