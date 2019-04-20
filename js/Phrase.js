@@ -39,7 +39,7 @@ class Phrase {
        return this.phrase.includes(letter);
    }
                  
-   /* Show "li" if passed letter matches appended "li" element(s) text content */
+   /* Show "li" if passed letter matches appended "li" element(s) text content. */
    showMatchedLetter(letter) {
        const appendedLI = document.querySelectorAll('#phrase ul li');
 
